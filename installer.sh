@@ -30,6 +30,21 @@ do
 					echo "Directory "$INSTALL_DIR" already exists."
 			fi
 	fi
+
+	[ -d "$INSTALL_DIR" ] && INSTALL_DIR_EXISTS="Y" || INSTALL_DIR_EXISTS="N"
+        	if [ "$INSTALL_DIR_EXISTS" != "Y" ] && [ "$INSTALL_DIR_EXISTS" != "y" ]
+                	then
+                        	echo "The directory does not exist."
+                                echo "Do you want us to create "$INSTALL_DIR"?"
+                                echo "[Y/N]"
+                                read CONFIRM_CREATE_DIR
+                                if [ "$CONFIRM_CREATE_DIR" = "Y" ] || [ "$CONFIRM_CREATE_DIR" = "y" ]
+                                	then
+                                        	mkdir -p $INSTALL_DIR
+                                fi 
+                        else
+                        	echo "Directory "$INSTALL_DIR" already exists."
+                fi
 done
 
 ## SOFTWARE SELECTION
@@ -94,6 +109,21 @@ do
                                         echo "Directory "$PKG_INSTALL_DIR" already exists."
                         fi
         fi
+	[ -d "$PKG_INSTALL_DIR" ] && PKG_INSTALL_DIR_EXISTS="Y" || PKG_INSTALL_DIR_EXISTS="N"
+        	if [ "$PKG_INSTALL_DIR_EXISTS" != "Y" ] && [ "$PKG_INSTALL_DIR_EXISTS" != "y" ]
+                	then
+                        	echo "The directory does not exist."
+                                echo "Do you want us to create "$PKG_INSTALL_DIR"?"
+                                echo "[Y]"
+                                read CONFIRM_CREATE_PKG_DIR
+                                if [ "$CONFIRM_CREATE_PKG_DIR" = "Y" ] || [ "$CONFIRM_CREATE_PKG_DIR" = "y" ]
+                                	then
+                                        	mkdir -p $PKG_INSTALL_DIR
+                                fi 
+                        else
+                        	echo "Directory "$PKG_INSTALL_DIR" already exists."
+                 fi
+
 done
 
 cd $PKG_INSTALL_DIR
@@ -126,7 +156,7 @@ do
                         echo 'Please provide the desired package install directory.'
                         read CPPLIB_INSTALL_DIR
                         [ -d "$CPPLIB_INSTALL_DIR" ] && CPPLIB_INSTALL_DIR_EXISTS="Y" || CPPLIB_INSTALL_DIR_EXISTS="N"
-                        if [ "$CPPLIB_INSTALL_DIR_EXISTS" != "Y" ] && [ "$CPPLIB_INSTALL_DIR_EXISTS" != "y" ]
+                        if [ "$CPPLIB_INSTALL_DIR_EXISTS" != "Y" ]
                                 then
                                         echo "The directory does not exist."
                                         echo "Do you want us to create "$CPPLIB_INSTALL_DIR"?"
@@ -140,6 +170,21 @@ do
                                         echo "Directory "$CPPLIB_INSTALL_DIR" already exists."
                         fi
         fi
+        [ -d "$CPPLIB_INSTALL_DIR" ] && CPPLIB_INSTALL_DIR_EXISTS="Y" || CPPLIB_INSTALL_DIR_EXISTS="N"
+        	if [ "$CPPLIB_INSTALL_DIR_EXISTS" != "Y" ]
+                	then
+                        	echo "The directory does not exist."
+                                echo "Do you want us to create "$CPPLIB_INSTALL_DIR"?"
+                                echo "[Y]"
+                                read CONFIRM_CREATE_CPPLIB_DIR
+                                if [ "$CONFIRM_CREATE_CPPLIB_DIR" = "Y" ] || [ "$CONFIRM_CREATE_CPPLIB_DIR" = "Y" ]
+                                	then
+                                        	mkdir -p $CPPLIB_INSTALL_DIR
+                                fi 
+                	else
+                		echo "Directory "$CPPLIB_INSTALL_DIR" already exists."
+                fi
+
 done
 
 echo "Do you want to install Boost?"
