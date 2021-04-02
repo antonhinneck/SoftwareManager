@@ -177,9 +177,10 @@ do
                                 echo "Do you want us to create "$CPPLIB_INSTALL_DIR"?"
                                 echo "[Y]"
                                 read CONFIRM_CREATE_CPPLIB_DIR
-                                if [ "$CONFIRM_CREATE_CPPLIB_DIR" = "Y" ] || [ "$CONFIRM_CREATE_CPPLIB_DIR" = "Y" ]
+                                if [ "$CONFIRM_CREATE_CPPLIB_DIR" = "Y" ] || [ "$CONFIRM_CREATE_CPPLIB_DIR" = "y" ]
                                 	then
-                                        	mkdir -p $CPPLIB_INSTALL_DIR
+                                        	echo $CPPLIB_INSTALL_DIR
+						mkdir -p $CPPLIB_INSTALL_DIR
                                 fi 
                 	else
                 		echo "Directory "$CPPLIB_INSTALL_DIR" already exists."
